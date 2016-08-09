@@ -32,7 +32,7 @@ public class ReaderLikingUsersView extends LinearLayout {
         setOrientation(HORIZONTAL);
         setGravity(Gravity.CENTER_VERTICAL);
 
-        mLikeAvatarSz = context.getResources().getDimensionPixelSize(R.dimen.avatar_sz_small);
+        mLikeAvatarSz = context.getResources().getDimensionPixelSize(R.dimen.avatar_sz_extra_small);
     }
 
     public void showLikingUsers(final ReaderPost post) {

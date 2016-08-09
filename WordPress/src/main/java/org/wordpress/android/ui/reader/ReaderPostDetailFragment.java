@@ -88,7 +88,6 @@ public class ReaderPostDetailFragment extends Fragment
     private ViewGroup mLayoutFooter;
     private ReaderWebView mReaderWebView;
     private ReaderLikingUsersView mLikingUsersView;
-    private View mLikingUsersDivider;
 
     private boolean mHasAlreadyUpdatedPost;
     private boolean mHasAlreadyRequestedPost;
@@ -188,7 +187,6 @@ public class ReaderPostDetailFragment extends Fragment
 
         mLayoutFooter = (ViewGroup) view.findViewById(R.id.layout_post_detail_footer);
         mLikingUsersView = (ReaderLikingUsersView) view.findViewById(R.id.layout_liking_users_view);
-        mLikingUsersDivider = view.findViewById(R.id.layout_liking_users_divider);
 
         // setup the ReaderWebView
         mReaderWebView = (ReaderWebView) view.findViewById(R.id.reader_webview);
@@ -442,7 +440,6 @@ public class ReaderPostDetailFragment extends Fragment
         getView().findViewById(R.id.container_related_posts).setVisibility(View.GONE);
         getView().findViewById(R.id.text_related_posts_label).setVisibility(View.GONE);
         mLikingUsersView.setVisibility(View.GONE);
-        mLikingUsersDivider.setVisibility(View.GONE);
 
         // clear the webView - otherwise it will remain scrolled to where the user scrolled to
         mReaderWebView.clearContent();
@@ -621,12 +618,6 @@ public class ReaderPostDetailFragment extends Fragment
                     }
                 });
             }
-            // if we know refreshLikes() is going to show the liking users, force liking user
-            // views to take up space right now
-            if (mPost.numLikes > 0 && mLikingUsersView.getVisibility() == View.GONE) {
-                mLikingUsersView.setVisibility(View.INVISIBLE);
-                mLikingUsersDivider.setVisibility(View.INVISIBLE);
-            }
         } else {
             countLikes.setVisibility(View.INVISIBLE);
             countLikes.setOnClickListener(null);
@@ -644,7 +635,6 @@ public class ReaderPostDetailFragment extends Fragment
         // nothing more to do if no likes
         if (mPost.numLikes == 0) {
             mLikingUsersView.setVisibility(View.GONE);
-            mLikingUsersDivider.setVisibility(View.GONE);
             return;
         }
 
@@ -656,7 +646,6 @@ public class ReaderPostDetailFragment extends Fragment
             }
         });
 
-        mLikingUsersDivider.setVisibility(View.VISIBLE);
         mLikingUsersView.setVisibility(View.VISIBLE);
         mLikingUsersView.showLikingUsers(mPost);
     }
