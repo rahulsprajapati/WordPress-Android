@@ -44,8 +44,8 @@
             android:layout_marginLeft="@dimen/margin_small"
             android:layout_marginRight="@dimen/margin_small"
             android:layout_toLeftOf="@+id/count_likes"
+            android:layout_toRightOf="@+id/count_comments"
             android:background="?android:selectableItemBackground"
-            android:gravity="right"
             android:visibility="gone"
             tools:visibility="visible" />
 
